@@ -34,4 +34,4 @@ RUN . /root/.bashrc && conda init bash && conda activate detect && python3 -m pi
 ##### RUN
 WORKDIR /root
 COPY build-resource/run.sh ./
-CMD . /root/.bashrc && conda init bash && conda activate detect && bash /root/run.sh && exec bash 
+CMD . /root/.bashrc && conda init bash && conda activate detect && bash /root/run.sh 
