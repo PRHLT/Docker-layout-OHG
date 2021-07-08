@@ -4,7 +4,7 @@ software_path="/pidocs-soft/projects/DLA"
 
 mkdir /experiment
 
-ls /data/* > /experiment/files.lst
+ls /data/*.tif > /experiment/files.lst
 
 #---- create prod annotations
 
