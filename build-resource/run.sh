@@ -38,9 +38,11 @@ cp /data/*.tif /experiment/page/
 
 python3 $software_path/utils/baselines/baselines.py --img_dir /experiment/page --page_dir /experiment/page --out_dir /experiment/page_baselines --must_line 'TextRegion'
 
+mkdir -p /payload/page;
+
 for page_in in `ls /experiment/page_baselines/*`; 
 do
-	python3 $software_path/utils/add_line/add_line.py 50 $page_in /result/`basename $page_in`
+	python3 $software_path/utils/add_line/add_line.py 50 $page_in /payload/page/`basename $page_in`
 done
 
 echo "Proccessing pages         [END]"
