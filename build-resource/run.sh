@@ -4,7 +4,8 @@ software_path="/pidocs-soft/projects/DLA"
 
 mkdir /experiment
 
-ls /data/*.tif > /experiment/files.lst
+#ls /data/*.tif > /experiment/files.lst
+find /data -maxdepth 1 -type f -exec file  --mime-type {} \+ | awk -F: '{if ($2 ~/image\//) print $1}' > /experiment/files.lst
 
 #---- create prod annotations
 
@@ -34,7 +35,7 @@ echo "Proccessing pages       [START]"
 
 python3 $software_path/utils/detectronCoco2page.py --results_json /experiment/inference/coco_instances_results.json --dataset_json /experiment/annotations/prod_annotations.json --output /experiment/page
 
-cp /data/*.tif /experiment/page/
+cp $(</experiment/files.lst) /experiment/page/;
 
 python3 $software_path/utils/baselines/baselines.py --img_dir /experiment/page --page_dir /experiment/page --out_dir /experiment/page_baselines --must_line 'TextRegion'
 
