@@ -35,7 +35,7 @@ echo "Proccessing pages       [START]"
 
 python3 $software_path/utils/detectronCoco2page.py --results_json /experiment/inference/coco_instances_results.json --dataset_json /experiment/annotations/prod_annotations.json --output /experiment/page
 
-cp $(</experiment/files.lst) /experiment/page/;
+ln -s $(</experiment/files.lst) /experiment/page/;
 
 python3 $software_path/utils/baselines/baselines.py --img_dir /experiment/page --page_dir /experiment/page --out_dir /experiment/page_baselines --must_line 'TextRegion'
 
